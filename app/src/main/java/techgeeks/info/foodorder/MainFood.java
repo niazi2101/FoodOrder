@@ -28,6 +28,9 @@ public class MainFood extends AppCompatActivity {
     private static final int mainItem3_price = 475;
 
     public static int main_subtotal = 0;
+    public static int main_subtotal1 = 0;
+    public static int main_subtotal2 = 0;
+    public static int main_subtotal3 = 0;
     public static int main_total = 0;
 
     @Override
@@ -65,9 +68,16 @@ public class MainFood extends AppCompatActivity {
         spinOne.setAdapter(adapter);
         spinTwo.setAdapter(adapter);
         spinThree.setAdapter(adapter);
+
+        textPrice.setText("");
     }
 
     public void CalculateMainOrder(View view) {
+        //main_total = 0;
+        main_subtotal=0;
+        main_subtotal1=0;
+        main_subtotal2=0;
+        main_subtotal3=0;
 
         //If checkboxOne is checked, calculate price of checkboxone items
         if(checkBoxOne.isChecked())
@@ -76,100 +86,114 @@ public class MainFood extends AppCompatActivity {
 
             if(selChocie.equals("1 Item"))
             {
-                main_subtotal = mainItem1_price;
+                main_subtotal1 = mainItem1_price;
             }
             else if(selChocie.equals("2 Items"))
             {
-                main_subtotal = mainItem1_price * 2;
+                main_subtotal1 = mainItem1_price * 2;
             }
             else if(selChocie.equals("3 Items"))
             {
-                main_subtotal = mainItem1_price * 3;
+                main_subtotal1 = mainItem1_price * 3;
             }
             else if(selChocie.equals("4 Items"))
             {
-                main_subtotal = mainItem1_price * 4;
+                main_subtotal1 = mainItem1_price * 4;
             }
             else if(selChocie.equals("5 Items"))
             {
-                main_subtotal = mainItem1_price * 5;
+                main_subtotal1 = mainItem1_price * 5;
             }
             else if(selChocie.equals("6 Item"))
             {
-                main_subtotal = mainItem1_price * 6;
+                main_subtotal1 = mainItem1_price * 6;
             }
 
-            main_total += main_subtotal;
+            //main_total += main_subtotal;
+        }else
+        {
+            main_subtotal1 = 0;
         }
 
         if(checkBoxTwo.isChecked())
         {
-            String selChocie = spinOne.getSelectedItem().toString();
+            String selChocie = spinTwo.getSelectedItem().toString();
 
             if(selChocie.equals("1 Item"))
             {
-                main_subtotal = mainItem2_price;
+                main_subtotal2 = mainItem2_price;
             }
             else if(selChocie.equals("2 Items"))
             {
-                main_subtotal = mainItem2_price * 2;
+                main_subtotal2 = mainItem2_price * 2;
             }
             else if(selChocie.equals("3 Items"))
             {
-                main_subtotal = mainItem2_price * 3;
+                main_subtotal2 = mainItem2_price * 3;
             }
             else if(selChocie.equals("4 Items"))
             {
-                main_subtotal = mainItem2_price * 4;
+                main_subtotal2 = mainItem2_price * 4;
             }
             else if(selChocie.equals("5 Items"))
             {
-                main_subtotal = mainItem2_price * 5;
+                main_subtotal2 = mainItem2_price * 5;
             }
             else if(selChocie.equals("6 Item"))
             {
-                main_subtotal = mainItem2_price * 6;
+                main_subtotal2 = mainItem2_price * 6;
             }
 
-            main_total += main_subtotal;
+            //main_total += main_subtotal;
+        }
+        else
+        {
+            main_subtotal2 = 0;
         }
 
         if(checkBoxThree.isChecked())
         {
-            String selChocie = spinOne.getSelectedItem().toString();
+            String selChocie = spinThree.getSelectedItem().toString();
 
             if(selChocie.equals("1 Item"))
             {
-                main_subtotal = mainItem3_price;
+                main_subtotal3 = mainItem3_price;
             }
             else if(selChocie.equals("2 Items"))
             {
-                main_subtotal = mainItem3_price * 2;
+                main_subtotal3 = mainItem3_price * 2;
             }
             else if(selChocie.equals("3 Items"))
             {
-                main_subtotal = mainItem3_price * 3;
+                main_subtotal3 = mainItem3_price * 3;
             }
             else if(selChocie.equals("4 Items"))
             {
-                main_subtotal = mainItem3_price * 4;
+                main_subtotal3 = mainItem3_price * 4;
             }
             else if(selChocie.equals("5 Items"))
             {
-                main_subtotal = mainItem3_price * 5;
+                main_subtotal3 = mainItem3_price * 5;
             }
             else if(selChocie.equals("6 Item"))
             {
-                main_subtotal = mainItem3_price * 6;
+                main_subtotal3 = mainItem3_price * 6;
             }
 
-            main_total += main_subtotal;
+
+        }
+        else
+        {
+            main_subtotal3 = 0;
         }
 
-        //updating UI with price of selected items
-        textPrice.setText("Price: " + main_total + " Rs");
+        main_subtotal = main_subtotal1 + main_subtotal2 + main_subtotal3;
 
-        Toast.makeText(getApplicationContext(),"Price: " + main_total + " Rs",Toast.LENGTH_SHORT).show();
+        //main_total += main_subtotal;
+        //updating UI with price of selected items
+        textPrice.setText("Price: " + main_subtotal + " Rs");
+
+        Toast.makeText(getApplicationContext(),"Price: " + main_subtotal + " Rs",Toast.LENGTH_SHORT).show();
 
     }
 }
