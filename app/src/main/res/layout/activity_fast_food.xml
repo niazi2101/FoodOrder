@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyish_green"
+    tools:context="techgeeks.info.foodorder.FastFood">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Select Main Food"
+            android:id="@+id/textView2"
+            android:textSize="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Single Savor Food - 160 Rs"
+            android:id="@+id/checkBoxOne"
+            android:textSize="@dimen/textSize"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="39dp"
+            android:checked="false" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerOne"
+
+            android:layout_below="@+id/checkBoxOne"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:spinnerMode="dropdown" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize"
+            android:text="Double Savor Food - 220 Rs"
+            android:id="@+id/checkBoxTwo"
+            android:layout_below="@+id/spinnerOne"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerTwo"
+            android:layout_below="@+id/checkBoxTwo"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:spinnerMode="dropdown" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New CheckBox"
+            android:id="@+id/checkBoxThree"
+            android:checked="false"
+            android:textSize="@dimen/textSize"
+
+            android:layout_below="@+id/spinnerTwo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerThree"
+            android:layout_below="@+id/checkBoxThree"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/textSize"
+            android:background="@color/whitish"
+            android:text="Price:"
+            android:id="@+id/textViewPrice"
+            android:layout_below="@+id/spinnerThree"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add to Cart"
+            android:id="@+id/buttonMainNext"
+            android:hint="Select fast food"
+            android:layout_alignTop="@+id/buttonOrderNow_main"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculate"
+            android:id="@+id/button"
+            android:onClick="CalculateMainOrder"
+            android:layout_below="@+id/textViewPrice"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Now"
+            android:id="@+id/buttonOrderNow_main"
+            android:layout_alignTop="@+id/button"
+            android:layout_toRightOf="@+id/button"
+            android:layout_toEndOf="@+id/button" />
+
+    </RelativeLayout>
+</ScrollView>
+

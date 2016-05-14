@@ -38,6 +38,8 @@ public class MainFood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_food);
 
+        this.setTitle("Main Food");
+
         spinOne = (Spinner) findViewById(R.id.spinnerOne);
         spinTwo = (Spinner) findViewById(R.id.spinnerTwo);
         spinThree = (Spinner) findViewById(R.id.spinnerThree);
