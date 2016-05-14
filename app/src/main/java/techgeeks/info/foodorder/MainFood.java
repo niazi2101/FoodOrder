@@ -13,6 +13,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import techgeeks.info.foodorder.core.BillManagement;
+
 public class MainFood extends AppCompatActivity {
 
     Spinner spinOne,spinTwo,spinThree,spinFour;
@@ -36,7 +38,8 @@ public class MainFood extends AppCompatActivity {
     public static int main_subtotal2 = 0;
     public static int main_subtotal3 = 0;
     public static int main_subtotal4 = 0;
-    //public static int main_total = 0;
+
+    BillManagement billManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class MainFood extends AppCompatActivity {
         setContentView(R.layout.activity_main_food);
 
         this.setTitle("Main Food");
+
+        billManagement = new BillManagement();
 
         spinOne = (Spinner) findViewById(R.id.spinnerOne);
         spinTwo = (Spinner) findViewById(R.id.spinnerTwo);
@@ -95,7 +100,7 @@ public class MainFood extends AppCompatActivity {
         main_subtotal2=0;
         main_subtotal3=0;
 
-        message += " Selected Items and Total Price: ";
+        message += " *** Main Foods *** ";
 
         //If checkboxOne is checked, calculate price of checkboxone items
         if(checkBoxOne.isChecked())
@@ -275,6 +280,9 @@ public class MainFood extends AppCompatActivity {
         //calculating price of selected main foods
         main_subtotal = main_subtotal1 + main_subtotal2 + main_subtotal3 + main_subtotal4;
 
+        //Sending all detail to BillManagement class
+        billManagement.setMainFood_message(message);
+        billManagement.setMainfood_bill(main_subtotal);
 
         message += "\n Total Price: " + main_subtotal + " Rs";
         //updating UI with price of selected items
@@ -287,14 +295,17 @@ public class MainFood extends AppCompatActivity {
     public void ButtonListenerMethod(View view) {
         switch(view.getId())
         {
-            case R.id.buttonCalculate_mFood:
+            case R.id.buttonCalculate_Food:
                 CalculateMainOrder();
                 break;
 
-            case R.id.buttonOrderNow_main: break;
+            case R.id.buttonOrderNow:
+                Intent order = new Intent(getApplicationContext(),OrderDetail.class);
+                startActivity(order);
+                break;
 
-            case R.id.buttonAddToCart_main:
-                CalculateMainOrder();
+            case R.id.buttonAddToCart:
+                //CalculateMainOrder();
                 Intent intent = new Intent(getApplicationContext(),FastFood.class);
                 startActivity(intent);
         }

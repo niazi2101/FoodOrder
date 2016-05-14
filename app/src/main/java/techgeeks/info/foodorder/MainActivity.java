@@ -22,11 +22,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
 
-            case R.id.buttonFastFood: break;
+            case R.id.buttonFastFood:
+                Intent j = new Intent(getApplicationContext(),FastFood.class);
+                startActivity(j);
+                break;
 
             case R.id.buttonDrinks: break;
 
-            case R.id.buttonDeliveryType: break;
+            case R.id.buttonDeliveryType:
+                Intent k = new Intent(getApplicationContext(),OrderDetail.class);
+                startActivity(k);
+                break;
 
             case R.id.buttonPaymentType: break;
 

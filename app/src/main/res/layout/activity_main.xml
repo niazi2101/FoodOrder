@@ -69,7 +69,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Delivery Type"
+        android:text="View Order Detail"
         android:id="@+id/buttonDeliveryType"
         android:textSize="20sp"
         android:paddingTop="10dp"

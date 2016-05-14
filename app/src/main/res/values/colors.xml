@@ -16,6 +16,8 @@
     <color name="input_register_bg">#3b4148</color>
     <color name="input_register_hint">#5e6266</color>
     <color name="greyish_green">#26ae90</color>
+    <color name="orderdetail_bg">#2693ae</color>
+    <color name="textView_bg">#bcd1e2</color>
     <color name="whitish">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="pinkish">#ff6861</color>

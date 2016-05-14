@@ -143,9 +143,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add to Cart"
-        android:id="@+id/buttonAddToCart_main"
+        android:id="@+id/buttonAddToCart"
         android:hint="Select fast food"
-        android:layout_alignTop="@+id/buttonOrderNow_main"
+        android:layout_alignTop="@+id/buttonOrderNow"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="ButtonListenerMethod"/>
@@ -154,7 +154,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calculate"
-        android:id="@+id/buttonCalculate_mFood"
+        android:id="@+id/buttonCalculate_Food"
         android:onClick="ButtonListenerMethod"
         android:layout_below="@+id/textViewPrice"
         android:layout_alignParentLeft="true"
@@ -166,10 +166,10 @@
         android:layout_height="wrap_content"
         android:text="Order Now"
         android:onClick="ButtonListenerMethod"
-        android:id="@+id/buttonOrderNow_main"
-        android:layout_alignTop="@+id/buttonCalculate_mFood"
-        android:layout_toRightOf="@+id/buttonCalculate_mFood"
-        android:layout_toEndOf="@+id/buttonCalculate_mFood" />
+        android:id="@+id/buttonOrderNow"
+        android:layout_alignTop="@+id/buttonCalculate_Food"
+        android:layout_toRightOf="@+id/buttonCalculate_Food"
+        android:layout_toEndOf="@+id/buttonCalculate_Food" />
     </RelativeLayout>
 
 
