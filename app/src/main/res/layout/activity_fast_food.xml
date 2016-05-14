@@ -4,7 +4,7 @@
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/greyish_green"
+    android:background="@color/fastFood_bg"
     tools:context="techgeeks.info.foodorder.FastFood">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Single Savor Food - 160 Rs"
+            android:text="Pizza"
             android:id="@+id/checkBoxOne"
             android:textSize="@dimen/textSize"
             android:layout_below="@+id/textView2"
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Calculate"
-            android:id="@+id/button"
+            android:id="@+id/buttonCalculate_mFood"
             android:onClick="CalculateMainOrder"
             android:layout_below="@+id/textViewPrice"
             android:layout_alignParentLeft="true"
@@ -127,9 +127,9 @@
             android:layout_height="wrap_content"
             android:text="Order Now"
             android:id="@+id/buttonOrderNow_main"
-            android:layout_alignTop="@+id/button"
-            android:layout_toRightOf="@+id/button"
-            android:layout_toEndOf="@+id/button" />
+            android:layout_alignTop="@+id/buttonCalculate_mFood"
+            android:layout_toRightOf="@+id/buttonCalculate_mFood"
+            android:layout_toEndOf="@+id/buttonCalculate_mFood" />
 
     </RelativeLayout>
 </ScrollView>
