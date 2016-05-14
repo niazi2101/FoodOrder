@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyish_green"
+    android:orientation="vertical"
+    tools:context="techgeeks.info.foodorder.MainActivity"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Main Menu"
+        android:id="@+id/textView4"
+        android:paddingTop="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Choose Main Food"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/buttonMainFood"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:onClick="OrderMainFood"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="CHOOSE FAST FOOD"
+        android:id="@+id/buttonFastFood"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/buttonMainFood"
+        android:layout_alignLeft="@+id/buttonMainFood"
+        android:layout_alignStart="@+id/buttonMainFood"
+        android:onClick="OrderMainFood"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="CHOOSE DRINKS"
+        android:id="@+id/buttonDrinks"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/buttonFastFood"
+        android:layout_alignLeft="@+id/buttonFastFood"
+        android:layout_alignStart="@+id/buttonFastFood"
+        android:layout_marginTop="5dp"
+        android:onClick="OrderMainFood"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Delivery Type"
+        android:id="@+id/buttonDeliveryType"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/buttonDrinks"
+        android:layout_centerHorizontal="true"
+        android:layout_alignRight="@+id/buttonPaymentType"
+        android:layout_alignEnd="@+id/buttonPaymentType"
+        android:onClick="OrderMainFood"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Payment Type"
+        android:id="@+id/buttonPaymentType"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="OrderMainFood"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Create An Account"
+        android:id="@+id/buttonAccount"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:onClick="OrderMainFood"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Settings"
+        android:id="@+id/buttonSettings"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:onClick="OrderMainFood"/>
+
+</LinearLayout>
+
