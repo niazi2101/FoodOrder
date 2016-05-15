@@ -299,7 +299,7 @@ public class FastFood extends AppCompatActivity {
 
             case R.id.buttonAddToCart:
                 //CalculateMainOrder();
-                Intent intent = new Intent(getApplicationContext(), FastFood.class);
+                Intent intent = new Intent(getApplicationContext(), OrderDetail.class);
                 startActivity(intent);
         }
     }

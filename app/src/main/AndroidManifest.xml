@@ -18,7 +18,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".MainFood" />
         <activity android:name=".FastFood" />
-        <activity android:name=".OrderDetail"></activity>
+        <activity android:name=".OrderDetail" />
+        <activity android:name=".OrderAddress"></activity>
     </application>
 
 </manifest>
