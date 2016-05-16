@@ -7,14 +7,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import techgeeks.info.foodorder.core.BillManagement;
 
 public class OrderDetail extends AppCompatActivity {
 
     TextView textViewMessage;
-    Button btnDelivery,btnPickup;
+    Button btnChange,btnAgree;
 
     BillManagement billManagement;
+
+    Calendar calendar;
 
     String message;
     @Override
@@ -24,13 +29,32 @@ public class OrderDetail extends AppCompatActivity {
 
         textViewMessage = (TextView) findViewById(R.id.textViewOrderDetail);
 
-        btnDelivery = (Button) findViewById(R.id.buttonDeliver_orderAct);
-        btnPickup = (Button) findViewById(R.id.buttonPickUp_orderAct);
+        btnChange = (Button) findViewById(R.id.buttonChange_Order);
+        btnAgree = (Button) findViewById(R.id.buttonPayment_Order);
 
         billManagement = new BillManagement();
 
-        message = billManagement.getFull_message();
+        calendar = Calendar.getInstance();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd:mm:yyyy HH:mm:ss a");
+        SimpleDateFormat sdf_date = new SimpleDateFormat("dd/MM/yyyy");
+
+        SimpleDateFormat sdf_time = new SimpleDateFormat("hh:mm a");
+
+        //String strDateTime = sdf.format(calendar.getTime());
+
+        String strDate = sdf_date.format(calendar.getTime());
+        String strTime = sdf_time.format(calendar.getTime());
+        //String strTime = sdf.format(calendar.get());
+
+        //String date = strDate.substring(0,10);
+        //String date = strDateTime.substring(0,10);
+        //String time = strDate.substring(10,19);
+        //String time = strDateTime.substring(10,19);
+
+        message = billManagement.getFull_message();
+        message += "\n\n Date: " + strDate;
+        message += "\n Time: " + strTime;
         textViewMessage.setText(message);
 
     }
@@ -47,10 +71,16 @@ public class OrderDetail extends AppCompatActivity {
                 billManagement.setMainFood_message(""); //clearing log
                 billManagement.setFastfood_bill(0);
                 billManagement.setMainfood_bill(0);
+                textViewMessage.setText("");
                 startActivity(i);
                 break;
 
-            case R.id.buttonPayment_Order: break;
+            case R.id.buttonPayment_Order:
+                Intent j = new Intent(getApplicationContext(),OrderAddress.class);
+                textViewMessage.setText("");
+                startActivity(j);
+
+                break;
         }
     }
 }

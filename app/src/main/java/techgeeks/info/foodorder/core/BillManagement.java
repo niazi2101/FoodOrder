@@ -15,8 +15,8 @@ public class BillManagement {
 
 
     public static String getFull_message() {
-        full_message += mainFood_message + "\n " + fastFood_message;
-        full_message += "\n " +"Total Price: "+getTotal_bill();
+        full_message = mainFood_message + "\n " + fastFood_message;
+        full_message += "\n " +"Total Price: "+getTotal_bill() + " Rs";
         return full_message;
     }
 
