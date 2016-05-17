@@ -30,6 +30,8 @@ public class DBhandler extends SQLiteOpenHelper {
     //Order Table Name
     public static final String ORDER_TABLE_NAME = "order_table";
     public static final String ORDER_COLUMN_ID = "order_id";  //Primary key
+    public static final String ORDER_COLUMN_ORDER_ID = "order_num";  //To identify each order
+
     public static final String ORDER_COLUMN_DETAIL = "order_detail"; //to store order detail
     public static final String ORDER_COLUMN_PRICE = "order_price";
     public static final String ORDER_COLUMN_PLACING_TIME = "order_Ptime"; // time when order was placed
@@ -49,6 +51,7 @@ public class DBhandler extends SQLiteOpenHelper {
     // Order_Table Create Statement
     private static final String CREATE_ORDER_TABLE = "CREATE TABLE IF NOT EXISTS "
             + ORDER_TABLE_NAME + "(" + ORDER_COLUMN_ID + " INTEGER PRIMARY KEY NOT NULL,"
+            + ORDER_COLUMN_ORDER_ID + " INTEGER,"
             + ORDER_COLUMN_DETAIL + " TEXT," + ORDER_COLUMN_PRICE + " TEXT,"
             + ORDER_COLUMN_PLACING_TIME + " TEXT," + ORDER_COLUMN_DELIVERING_TIME + " TEXT,"
             + ORDER_COLUMN_DELIVERED + " INTEGER" + ")";
@@ -145,12 +148,13 @@ public class DBhandler extends SQLiteOpenHelper {
          */
 
     //Function to add a new Order to database
-    public boolean insertOrder(DBhandler handle,String detail, String price,
+    public boolean insertOrder(DBhandler handle,int ordernum,String detail, String price,
                                 String placingTime, String deliveryTime,int delivered) {
         SQLiteDatabase db = handle.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
 
+        contentValues.put(ORDER_COLUMN_ORDER_ID, ordernum);
         contentValues.put(ORDER_COLUMN_DETAIL, detail);
         contentValues.put(ORDER_COLUMN_PRICE, price);
         contentValues.put(ORDER_COLUMN_PLACING_TIME, placingTime);

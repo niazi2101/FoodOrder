@@ -1,13 +1,18 @@
 package techgeeks.info.foodorder.core;
 
+import techgeeks.info.foodorder.SQLPackage.DBhandler;
+
 /**
  * Created by Hamza Khan Niaz on 5/14/2016.
  */
 public class BillManagement {
+    //DBhandler dbhandler = new DBhandler(this);
     private static int sub_bill = 0;
     private static int mainfood_bill = 0;   //bill from main food activity
     private static int fastfood_bill = 0;   //bill from fast food activity
     private static int total_bill = 0;
+
+    private static int orderNum;
 
     private static String mainFood_message;
     private static String fastFood_message;
@@ -16,7 +21,7 @@ public class BillManagement {
 
     public static String getFull_message() {
         full_message = mainFood_message + "\n " + fastFood_message;
-        full_message += "\n " +"Total Price: "+getTotal_bill() + " Rs";
+        full_message += "\n " + "Total Price: " + getTotal_bill() + " Rs";
         return full_message;
     }
 
@@ -75,5 +80,22 @@ public class BillManagement {
         return fastfood_bill;
     }
 
+    /*
+    public void insertAddress(DBhandler handle, String house, String street,
+                                 String sector, String city, String phone, int orderNum) {
+        //dbhandler = new DBhandler();
 
+        handle.insertAddress(handle,house,street,sector,city,phone,orderNum);
+        //return true;
+    }*/
+
+    public void setOrderNum(int orderNum)
+    {
+        this.orderNum = orderNum;
+    }
+
+    public static int getOrderNum()
+    {
+        return orderNum;
+    }
 }
