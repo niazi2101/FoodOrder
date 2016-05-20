@@ -29,7 +29,7 @@ public class DBhandler extends SQLiteOpenHelper {
 
     //Order Table Name
     public static final String ORDER_TABLE_NAME = "order_table";
-    public static final String ORDER_COLUMN_ID = "order_id";  //Primary key
+    public static final String ORDER_COLUMN_ID = "_id";  //Primary key
     public static final String ORDER_COLUMN_ORDER_ID = "order_num";  //To identify each order
 
     public static final String ORDER_COLUMN_DETAIL = "order_detail"; //to store order detail
@@ -81,6 +81,8 @@ public class DBhandler extends SQLiteOpenHelper {
     //Function to add a new address to database
     public boolean insertAddress(DBhandler handle,String house, String street,
                                 String sector, String city,String phone,int order) {
+        long check=-1;
+        boolean ch=false;
         SQLiteDatabase db = handle.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -92,9 +94,17 @@ public class DBhandler extends SQLiteOpenHelper {
         contentValues.put(ADDRESS_COLUMN_PHONE, phone);
         contentValues.put(ADDRESS_COLUMN_ORDER_ID, order);
 
-        db.insert(ADDRESS_TABLE_NAME, null, contentValues);
+        check = db.insert(ADDRESS_TABLE_NAME, null, contentValues);
 
-        return true;
+        if(check == 1)
+        {
+            ch = true;
+        }
+        else
+        {
+            ch = false;
+        }
+        return ch;
     }
 
     //Function for updating Address
@@ -207,7 +217,7 @@ public class DBhandler extends SQLiteOpenHelper {
     public Cursor getOrder(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + ORDER_TABLE_NAME + " WHERE " +
-                ORDER_COLUMN_ID + "=?", new String[]{Integer.toString(id)});
+                ORDER_COLUMN_ORDER_ID + "=?", new String[]{Integer.toString(id)});
 
         return res;
     }

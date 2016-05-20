@@ -24,6 +24,8 @@ public class OrderAddress extends AppCompatActivity {
     DBhandler dBhandler;
     Context context = this;
 
+    public static String ORDER = "order";
+
     boolean addressCheck = false, orderCheck =false;
     private static int orderNum = 2000;
 
@@ -45,7 +47,7 @@ public class OrderAddress extends AppCompatActivity {
         etCity = (AutoCompleteTextView) findViewById(R.id.editTextCity);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, CITIES);
+                android.R.layout.simple_selectable_list_item, CITIES);
         etCity.setAdapter(adapter);
 
         btnFinalizeOrder = (Button) findViewById(R.id.buttonFinalOrder);
@@ -80,25 +82,33 @@ public class OrderAddress extends AppCompatActivity {
         String date = billManagement.getStrDateTime();
 
         try {
+            /*
             if (house.equals("") || street.equals("") || sector.equals("")
                     || city.equals("") || phone.equals("")) {
                 Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
-
-                dBhandler.insertAddress(dBhandler,house, street, sector, city, phone, orderNum);
-
+            */
+                addressCheck = dBhandler.insertAddress(dBhandler,house, street, sector, city, phone, orderNum);
+                //addressCheck = dBhandler.insertAddress(dBhandler,"house",
+                        //"street", "sector", "city", "phone", orderNum);
+            if(addressCheck = true) {
                 billManagement.setOrderNum(orderNum);
-                orderCheck = dBhandler.insertOrder(dBhandler,orderNum,orderDetail,SPrice,date,null,0);
-                if(orderCheck == true) {
+                //orderCheck = dBhandler.insertOrder(dBhandler, orderNum, "orderDetail", "SPrice", "date", null, 0);
+                orderCheck = dBhandler.insertOrder(dBhandler, orderNum,
+                        orderDetail, SPrice, date, null, 0);
+                if (orderCheck == true) {
                     Toast.makeText(getApplicationContext(), "Data inserted : " + orderNum, Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(),OneActivity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    Intent i = new Intent(getApplicationContext(), TestActivity.class);
+                    //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    i.putExtra(ORDER,orderNum);
                     startActivity(i);
-                }
-                else
-                    Toast.makeText(getApplicationContext(), "Data insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getApplicationContext(), "Order insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(getApplicationContext(), "Data insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
 
-            }
+
+
         }catch(Exception e)
         {
             Toast.makeText(getApplicationContext(), "Address insert failed: "+ e.getMessage(), Toast.LENGTH_SHORT).show();

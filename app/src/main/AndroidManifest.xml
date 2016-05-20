@@ -21,7 +21,8 @@
         <activity android:name=".OrderDetail" />
         <activity android:name=".OrderAddress" />
         <activity android:name=".ListActivity" />
-        <activity android:name=".ShowDetail"></activity>
+        <activity android:name=".ShowDetail" />
+        <activity android:name=".TestActivity"></activity>
     </application>
 
 </manifest>
