@@ -1,6 +1,7 @@
 package techgeeks.info.foodorder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,7 @@ public class OrderAddress extends AppCompatActivity {
     DBhandler dBhandler;
     Context context = this;
 
+    boolean addressCheck = false, orderCheck =false;
     private static int orderNum = 2000;
 
     private static final String[] CITIES = new String[] {
@@ -70,14 +72,31 @@ public class OrderAddress extends AppCompatActivity {
         String city = etCity.getText().toString();
         String phone = etPhone.getText().toString();
 
+        String orderDetail = billManagement.getFull_message();
+        int price = billManagement.getTotal_bill();
+        String SPrice = ""+ price;
+
+        int orderID = billManagement.getOrderNum();
+        String date = billManagement.getStrDateTime();
+
         try {
             if (house.equals("") || street.equals("") || sector.equals("")
                     || city.equals("") || phone.equals("")) {
                 Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
+
                 dBhandler.insertAddress(dBhandler,house, street, sector, city, phone, orderNum);
+
                 billManagement.setOrderNum(orderNum);
-                Toast.makeText(getApplicationContext(), "Address inserted : "+ orderNum, Toast.LENGTH_SHORT).show();
+                orderCheck = dBhandler.insertOrder(dBhandler,orderNum,orderDetail,SPrice,date,null,0);
+                if(orderCheck == true) {
+                    Toast.makeText(getApplicationContext(), "Data inserted : " + orderNum, Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(),OneActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "Data insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
 
             }
         }catch(Exception e)

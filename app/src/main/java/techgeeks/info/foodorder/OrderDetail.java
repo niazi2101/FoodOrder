@@ -22,6 +22,7 @@ public class OrderDetail extends AppCompatActivity {
     Calendar calendar;
 
     String message;
+    String strDateTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class OrderDetail extends AppCompatActivity {
 
         SimpleDateFormat sdf_time = new SimpleDateFormat("hh:mm a");
 
-        //String strDateTime = sdf.format(calendar.getTime());
+        strDateTime = sdf.format(calendar.getTime());
 
         String strDate = sdf_date.format(calendar.getTime());
         String strTime = sdf_time.format(calendar.getTime());
@@ -76,6 +77,10 @@ public class OrderDetail extends AppCompatActivity {
                 break;
 
             case R.id.buttonPayment_Order:
+
+                //inserting date n time to database
+                billManagement.setStrDateTime(strDateTime);
+
                 Intent j = new Intent(getApplicationContext(),OrderAddress.class);
                 textViewMessage.setText("");
                 startActivity(j);

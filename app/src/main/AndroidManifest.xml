@@ -19,7 +19,9 @@
         <activity android:name=".MainFood" />
         <activity android:name=".FastFood" />
         <activity android:name=".OrderDetail" />
-        <activity android:name=".OrderAddress"></activity>
+        <activity android:name=".OrderAddress" />
+        <activity android:name=".ListActivity" />
+        <activity android:name=".ShowDetail"></activity>
     </application>
 
 </manifest>

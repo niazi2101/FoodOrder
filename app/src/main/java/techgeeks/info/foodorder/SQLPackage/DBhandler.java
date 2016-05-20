@@ -150,21 +150,37 @@ public class DBhandler extends SQLiteOpenHelper {
     //Function to add a new Order to database
     public boolean insertOrder(DBhandler handle,int ordernum,String detail, String price,
                                 String placingTime, String deliveryTime,int delivered) {
-        SQLiteDatabase db = handle.getWritableDatabase();
+        long check = -1;
+        boolean ch = false;
+        try {
+            SQLiteDatabase db = handle.getWritableDatabase();
 
-        ContentValues contentValues = new ContentValues();
+            ContentValues contentValues = new ContentValues();
 
-        contentValues.put(ORDER_COLUMN_ORDER_ID, ordernum);
-        contentValues.put(ORDER_COLUMN_DETAIL, detail);
-        contentValues.put(ORDER_COLUMN_PRICE, price);
-        contentValues.put(ORDER_COLUMN_PLACING_TIME, placingTime);
-        contentValues.put(ORDER_COLUMN_DELIVERING_TIME, deliveryTime);
-        contentValues.put(ORDER_COLUMN_DELIVERED, delivered);
+            contentValues.put(ORDER_COLUMN_ORDER_ID, ordernum);
+            contentValues.put(ORDER_COLUMN_DETAIL, detail);
+            contentValues.put(ORDER_COLUMN_PRICE, price);
+            contentValues.put(ORDER_COLUMN_PLACING_TIME, placingTime);
+            contentValues.put(ORDER_COLUMN_DELIVERING_TIME, deliveryTime);
+            contentValues.put(ORDER_COLUMN_DELIVERED, delivered);
 
 
-        db.insert(ORDER_TABLE_NAME, null, contentValues);
+            check = db.insert(ORDER_TABLE_NAME, null, contentValues);
+            if(check == 1)
+            {
+                ch = true;
+            }
+            else
+            {
+                ch = false;
+            }
+        }
+        catch(Exception e)
+        {
+            Log.e("INSERERROR", e.getMessage());
+        }
+        return ch;
 
-        return true;
     }
 
     //Function for updating Order

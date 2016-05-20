@@ -17,7 +17,15 @@ public class BillManagement {
     private static String mainFood_message;
     private static String fastFood_message;
     private static String full_message;
+    private static String strDateTime;
 
+    public static String getStrDateTime() {
+        return strDateTime;
+    }
+
+    public static void setStrDateTime(String strDateTime) {
+        BillManagement.strDateTime = strDateTime;
+    }
 
     public static String getFull_message() {
         full_message = mainFood_message + "\n " + fastFood_message;
@@ -88,6 +96,8 @@ public class BillManagement {
         handle.insertAddress(handle,house,street,sector,city,phone,orderNum);
         //return true;
     }*/
+
+
 
     public void setOrderNum(int orderNum)
     {

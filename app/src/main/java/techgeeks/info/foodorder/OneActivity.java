@@ -22,4 +22,10 @@ public class OneActivity extends AppCompatActivity {
 
         startActivity(i);
     }
+    public void DeliverFood(View view) {
+
+        Intent i = new Intent(getApplicationContext(),ListActivity.class);
+
+        startActivity(i);
+    }
 }
