@@ -154,7 +154,7 @@
                 android:background="@drawable/textview_bg"
                 android:text="Price:"
                 android:id="@+id/textViewPrice"
-                android:padding="5dp"
+                android:padding="10dp"
 
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />

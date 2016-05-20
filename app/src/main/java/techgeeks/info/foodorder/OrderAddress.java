@@ -26,8 +26,12 @@ public class OrderAddress extends AppCompatActivity {
 
     public static String ORDER = "order";
 
-    boolean addressCheck = false, orderCheck =false;
-    private static int orderNum = 2000;
+    boolean addressCheck = false, orderCheck =false, whilecheck = false;
+    private static int orderNum ;
+
+    int i=0;
+    //array of order numbers
+    private int array[] = {2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010} ;
 
     private static final String[] CITIES = new String[] {
             "Islamabad", "Rawalpindi", "Quetta", "Karachi", "Lahore", "Multan", "Peshawar"
@@ -92,19 +96,26 @@ public class OrderAddress extends AppCompatActivity {
                 //addressCheck = dBhandler.insertAddress(dBhandler,"house",
                         //"street", "sector", "city", "phone", orderNum);
             if(addressCheck = true) {
-                billManagement.setOrderNum(orderNum);
-                //orderCheck = dBhandler.insertOrder(dBhandler, orderNum, "orderDetail", "SPrice", "date", null, 0);
-                orderCheck = dBhandler.insertOrder(dBhandler, orderNum,
-                        orderDetail, SPrice, date, null, 0);
-                if (orderCheck == true) {
-                    Toast.makeText(getApplicationContext(), "Data inserted : " + orderNum, Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), TestActivity.class);
-                    //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    i.putExtra(ORDER,orderNum);
-                    startActivity(i);
-                } else
-                    Toast.makeText(getApplicationContext(), "Order insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
-            } else
+               do {
+                    i++;
+                   orderNum = array[i];
+
+                   //orderCheck = dBhandler.insertOrder(dBhandler, orderNum, "orderDetail", "SPrice", "date", null, 0);
+                   orderCheck = dBhandler.insertOrder(dBhandler, orderNum,
+                           orderDetail, SPrice, date, null, 0);
+                   if (orderCheck == true) {
+                       billManagement.setOrderNum(orderNum);
+
+                       Toast.makeText(getApplicationContext(), "Data inserted : " + orderNum, Toast.LENGTH_SHORT).show();
+                       Intent i = new Intent(getApplicationContext(), TestActivity.class);
+                       //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                       i.putExtra(ORDER, orderNum);
+                       startActivity(i);
+                       whilecheck = true;
+                   } else
+                       Toast.makeText(getApplicationContext(), "Order insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
+               }while(whilecheck != true);
+               } else
                 Toast.makeText(getApplicationContext(), "Data insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
 
 

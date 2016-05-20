@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/greyish_green"
+    android:background="@color/orderdetail_bg"
     android:orientation="vertical"
     tools:context="techgeeks.info.foodorder.MainActivity"
     >
@@ -32,6 +32,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:id="@+id/buttonMainFood"
+        android:background="@drawable/buttoncolor"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
@@ -42,6 +43,8 @@
         android:layout_height="wrap_content"
         android:text="CHOOSE FAST FOOD"
         android:id="@+id/buttonFastFood"
+        android:background="@drawable/buttoncolor"
+
         android:textSize="20sp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -57,6 +60,8 @@
         android:layout_height="wrap_content"
         android:text="CHOOSE DRINKS"
         android:id="@+id/buttonDrinks"
+        android:background="@drawable/buttoncolor"
+
         android:textSize="20sp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -69,6 +74,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/buttoncolor"
+
         android:text="View Order Detail"
         android:id="@+id/buttonDeliveryType"
         android:textSize="20sp"
@@ -86,6 +93,8 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Payment Type"
+        android:background="@drawable/buttoncolor"
+
         android:id="@+id/buttonPaymentType"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -100,6 +109,8 @@
         android:textSize="20sp"
         android:text="Create An Account"
         android:id="@+id/buttonAccount"
+        android:background="@drawable/buttoncolor"
+
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginTop="5dp"
@@ -111,6 +122,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/buttoncolor"
+
         android:textSize="20sp"
         android:text="Settings"
         android:id="@+id/buttonSettings"

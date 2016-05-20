@@ -22,7 +22,7 @@ public class TodoCursorAdaptor extends CursorAdapter {
     // you don't bind any data to the view at this point.
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.list_items_three, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.listitem_rect, parent, false);
     }
 
     // The bindView method is used to bind all data to a given view
@@ -31,19 +31,20 @@ public class TodoCursorAdaptor extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         // Find fields to populate in inflated template
 
-        TextView Textreg = (TextView) view.findViewById(R.id.student_reg);
-        TextView Textname = (TextView) view.findViewById(R.id.Text_name);
-        //TextView Textdegree = (TextView) view.findViewById(R.id.Text_degree);
+        TextView TextOrd = (TextView) view.findViewById(R.id.ordNum);
+        TextView TextDate = (TextView) view.findViewById(R.id.firstLine);
+        TextView TextPrice = (TextView) view.findViewById(R.id.secondLine);
 
         // Extract properties from cursor
-        int reg = cursor.getInt(cursor.getColumnIndexOrThrow("order_num"));
-        String name = cursor.getString(cursor.getColumnIndexOrThrow("order_price"));
-        //String degree = cursor.getString(cursor.getColumnIndexOrThrow("order_Ptime"));
+        int order = cursor.getInt(cursor.getColumnIndexOrThrow("order_num"));
+        String price = cursor.getString(cursor.getColumnIndexOrThrow("order_price"));
+        String date = cursor.getString(cursor.getColumnIndexOrThrow("order_Ptime"));
 
         // Populate fields with extracted properties
-        Textname.setText(name);
-        Textreg.setText(String.valueOf(reg));
-//        Textdegree.setText(degree);
+        TextOrd.setText(String.valueOf(order));
+        TextDate.setText(date);
+        TextPrice.setText(price);
+
 
 
     }

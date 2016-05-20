@@ -28,8 +28,32 @@ public class BillManagement {
     }
 
     public static String getFull_message() {
-        full_message = mainFood_message + "\n " + fastFood_message;
-        full_message += "\n " + "Total Price: " + getTotal_bill() + " Rs";
+        //if main food not null
+        if(!mainFood_message.equals(null))
+        {
+            full_message = mainFood_message ;   //add main food message
+            //if fastfood is not null
+            if(!fastFood_message.equals(null))
+            {
+                full_message += "\n" + fastFood_message;
+            }
+        }// if main food is null
+        else
+        if(mainFood_message.equals(null) )
+        {
+            //if fastfood is not null
+            if(!fastFood_message.equals(null))
+            {
+                full_message =   fastFood_message;
+            }
+
+        }
+        if(!full_message.equals(null))
+        {
+            full_message += "\n " + "Total Price: " + getTotal_bill() + " Rs";
+        }
+        //full_message = mainFood_message + "\n " + fastFood_message;
+        //full_message += "\n " + "Total Price: " + getTotal_bill() + " Rs";
         return full_message;
     }
 

@@ -64,9 +64,9 @@ public class TestActivity extends AppCompatActivity {
         }
 
         tView1.setText("Order #: " + st1);
-        tView2.setText("Order #: " + st2);
-        tView3.setText("Order #: " + st3);
-        tView4.setText("Order #: " + st4);
+        tView2.setText("Detail #: " + st2);
+        tView3.setText("Price #: " + st4);
+        tView4.setText("Date #: " + st3);
 
 
     }
