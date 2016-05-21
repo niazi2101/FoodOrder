@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,18 +28,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(j);
                 break;
 
-            case R.id.buttonDrinks: break;
-
-            case R.id.buttonDeliveryType:
-                Intent k = new Intent(getApplicationContext(),OrderDetail.class);
-                startActivity(k);
+            case R.id.buttonDrinks:
+                Toast.makeText(getApplicationContext(),"Work in progress",Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.buttonPaymentType: break;
+            case R.id.buttonDeliveryType:
+                /*Intent k = new Intent(getApplicationContext(),OrderDetail.class);
+                startActivity(k);*/
+                Toast.makeText(getApplicationContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                break;
 
-            case R.id.buttonAccount: break;
+            case R.id.buttonPaymentType:
+                Toast.makeText(getApplicationContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                break;
 
-            case R.id.buttonSettings: break;
+            case R.id.buttonAccount:
+                Toast.makeText(getApplicationContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.buttonSettings:
+                Toast.makeText(getApplicationContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                break;
         }
 
     }

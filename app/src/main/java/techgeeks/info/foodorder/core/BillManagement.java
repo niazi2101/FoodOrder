@@ -14,9 +14,9 @@ public class BillManagement {
 
     private static int orderNum;
 
-    private static String mainFood_message;
-    private static String fastFood_message;
-    private static String full_message;
+    private static String mainFood_message = "";
+    private static String fastFood_message = "";
+    private static String full_message ;
     private static String strDateTime;
 
     public static String getStrDateTime() {
@@ -29,26 +29,26 @@ public class BillManagement {
 
     public static String getFull_message() {
         //if main food not null
-        if(!mainFood_message.equals(null))
+        if(!mainFood_message.equals(""))
         {
             full_message = mainFood_message ;   //add main food message
             //if fastfood is not null
-            if(!fastFood_message.equals(null))
+            if(!fastFood_message.equals(""))
             {
                 full_message += "\n" + fastFood_message;
             }
         }// if main food is null
         else
-        if(mainFood_message.equals(null) )
+        if(mainFood_message.equals("") )
         {
             //if fastfood is not null
-            if(!fastFood_message.equals(null))
+            if(!fastFood_message.equals(""))
             {
                 full_message =   fastFood_message;
             }
 
         }
-        if(!full_message.equals(null))
+        if(!full_message.equals(""))
         {
             full_message += "\n " + "Total Price: " + getTotal_bill() + " Rs";
         }

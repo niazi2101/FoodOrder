@@ -37,7 +37,7 @@ public class OrderDetail extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd:mm:yyyy HH:mm:ss a");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm a");
         SimpleDateFormat sdf_date = new SimpleDateFormat("dd/MM/yyyy");
 
         SimpleDateFormat sdf_time = new SimpleDateFormat("hh:mm a");

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ public class MainFood extends AppCompatActivity {
     Spinner spinOne,spinTwo,spinThree,spinFour;
     CheckBox checkBoxOne, checkBoxTwo, checkBoxThree, checkBoxFour;
     TextView textPrice;
+    Button btnCalculate,btnOrder,btnCart;
+
 
     private static final String mainItem1 = "Chicken Plao - Single - 165 Rs";
     private static final String mainItem2 = "Chicken Plao - Double - 220 Rs";
@@ -49,6 +52,10 @@ public class MainFood extends AppCompatActivity {
         this.setTitle("Main Food");
 
         billManagement = new BillManagement();
+
+        btnCalculate = (Button) findViewById(R.id.buttonCalculate_Food);
+        btnOrder = (Button) findViewById(R.id.buttonOrderNow);
+        btnCart = (Button) findViewById(R.id.buttonAddToCart);
 
         spinOne = (Spinner) findViewById(R.id.spinnerOne);
         spinTwo = (Spinner) findViewById(R.id.spinnerTwo);
@@ -90,6 +97,9 @@ public class MainFood extends AppCompatActivity {
         message = "";
         textPrice.setText(message);
 
+        //disabling order and cart buttons
+        btnCart.setEnabled(false);
+        btnOrder.setEnabled(false);
     }
 
     //Function to calculate price of selected foods
@@ -100,6 +110,7 @@ public class MainFood extends AppCompatActivity {
         main_subtotal2=0;
         main_subtotal3=0;
 
+        message = "";
         message += " *** Main Foods *** ";
 
         //If checkboxOne is checked, calculate price of checkboxone items
@@ -280,9 +291,6 @@ public class MainFood extends AppCompatActivity {
         //calculating price of selected main foods
         main_subtotal = main_subtotal1 + main_subtotal2 + main_subtotal3 + main_subtotal4;
 
-        //Sending all detail to BillManagement class
-        billManagement.setMainFood_message(message);
-        billManagement.setMainfood_bill(main_subtotal);
 
         message += "\n Total Price: " + main_subtotal + " Rs";
         //updating UI with price of selected items
@@ -297,15 +305,24 @@ public class MainFood extends AppCompatActivity {
         {
             case R.id.buttonCalculate_Food:
                 CalculateMainOrder();
+                btnCart.setEnabled(true);
+                btnOrder.setEnabled(true);
                 break;
 
             case R.id.buttonOrderNow:
+                //Sending all detail to BillManagement class
+                billManagement.setMainFood_message(message);
+                billManagement.setMainfood_bill(main_subtotal);
+
                 Intent order = new Intent(getApplicationContext(),OrderDetail.class);
                 startActivity(order);
                 break;
 
             case R.id.buttonAddToCart:
-                //CalculateMainOrder();
+                //Sending all detail to BillManagement class
+                billManagement.setMainFood_message(message);
+                billManagement.setMainfood_bill(main_subtotal);
+
                 Intent intent = new Intent(getApplicationContext(),FastFood.class);
                 startActivity(intent);
         }

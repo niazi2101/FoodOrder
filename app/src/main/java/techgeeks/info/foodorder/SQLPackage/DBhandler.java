@@ -51,7 +51,7 @@ public class DBhandler extends SQLiteOpenHelper {
     // Order_Table Create Statement
     private static final String CREATE_ORDER_TABLE = "CREATE TABLE IF NOT EXISTS "
             + ORDER_TABLE_NAME + "(" + ORDER_COLUMN_ID + " INTEGER PRIMARY KEY NOT NULL,"
-            + ORDER_COLUMN_ORDER_ID + " INTEGER,"
+            + ORDER_COLUMN_ORDER_ID + " INTEGER UNIQUE,"
             + ORDER_COLUMN_DETAIL + " TEXT," + ORDER_COLUMN_PRICE + " TEXT,"
             + ORDER_COLUMN_PLACING_TIME + " TEXT," + ORDER_COLUMN_DELIVERING_TIME + " TEXT,"
             + ORDER_COLUMN_DELIVERED + " INTEGER" + ")";

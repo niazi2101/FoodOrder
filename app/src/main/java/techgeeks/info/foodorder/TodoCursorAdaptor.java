@@ -43,7 +43,7 @@ public class TodoCursorAdaptor extends CursorAdapter {
         // Populate fields with extracted properties
         TextOrd.setText(String.valueOf(order));
         TextDate.setText(date);
-        TextPrice.setText(price);
+        TextPrice.setText(price + " Rs");
 
 
 

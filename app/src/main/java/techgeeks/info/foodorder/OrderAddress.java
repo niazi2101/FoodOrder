@@ -17,7 +17,7 @@ import techgeeks.info.foodorder.core.BillManagement;
 public class OrderAddress extends AppCompatActivity {
 
     EditText etHouse,etStreet,etSector,etPhone;
-    AutoCompleteTextView etCity;
+    AutoCompleteTextView etCity,etOrdNum;
     Button btnFinalizeOrder;
 
     BillManagement billManagement;
@@ -31,7 +31,9 @@ public class OrderAddress extends AppCompatActivity {
 
     int i=0;
     //array of order numbers
-    private int array[] = {2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010} ;
+    private static final String[] orders = {"2000","2001","2002","2003",
+            "2004","2005","2006","2007","2008","2009","2010"} ;
+    //private static final int[] orders = {2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010} ;
 
     private static final String[] CITIES = new String[] {
             "Islamabad", "Rawalpindi", "Quetta", "Karachi", "Lahore", "Multan", "Peshawar"
@@ -49,10 +51,16 @@ public class OrderAddress extends AppCompatActivity {
         etPhone = (EditText) findViewById(R.id.editTextPhone);
 
         etCity = (AutoCompleteTextView) findViewById(R.id.editTextCity);
+        etOrdNum = (AutoCompleteTextView) findViewById(R.id.editTextOrdNum);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> Cityadapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_selectable_list_item, CITIES);
-        etCity.setAdapter(adapter);
+        ArrayAdapter<String> Orderadapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_selectable_list_item, orders);
+
+
+        etCity.setAdapter(Cityadapter);
+        etOrdNum.setAdapter(Orderadapter);
 
         btnFinalizeOrder = (Button) findViewById(R.id.buttonFinalOrder);
         dBhandler = new DBhandler(context);
@@ -78,11 +86,15 @@ public class OrderAddress extends AppCompatActivity {
         String city = etCity.getText().toString();
         String phone = etPhone.getText().toString();
 
+        //String orderNumString = etOrdNum.getText().toString();
+
+        //int orderNumInt = Integer.parseInt(etOrdNum.getText().toString());
+
         String orderDetail = billManagement.getFull_message();
         int price = billManagement.getTotal_bill();
         String SPrice = ""+ price;
 
-        int orderID = billManagement.getOrderNum();
+        //int orderID = billManagement.getOrderNum();
         String date = billManagement.getStrDateTime();
 
         try {
@@ -92,31 +104,43 @@ public class OrderAddress extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
             */
-                addressCheck = dBhandler.insertAddress(dBhandler,house, street, sector, city, phone, orderNum);
+            do{
+                int orderNumInt = Integer.parseInt(etOrdNum.getText().toString());
+
+                orderCheck = dBhandler.insertOrder(dBhandler, orderNumInt,
+                        orderDetail, SPrice, date, null, 0);
+
                 //addressCheck = dBhandler.insertAddress(dBhandler,"house",
                         //"street", "sector", "city", "phone", orderNum);
-            if(addressCheck = true) {
-               do {
-                    i++;
-                   orderNum = array[i];
+                if (orderCheck == true) {
+
+                    //i++;
+                   //orderNum = array[i];
+                addressCheck = dBhandler.insertAddress(dBhandler,house, street, sector, city, phone, orderNumInt);
 
                    //orderCheck = dBhandler.insertOrder(dBhandler, orderNum, "orderDetail", "SPrice", "date", null, 0);
-                   orderCheck = dBhandler.insertOrder(dBhandler, orderNum,
-                           orderDetail, SPrice, date, null, 0);
-                   if (orderCheck == true) {
-                       billManagement.setOrderNum(orderNum);
+                if(addressCheck = true) {
 
-                       Toast.makeText(getApplicationContext(), "Data inserted : " + orderNum, Toast.LENGTH_SHORT).show();
+                       billManagement.setOrderNum(orderNumInt);
+
+                       Toast.makeText(getApplicationContext(), "Data inserted : " + orderNumInt, Toast.LENGTH_SHORT).show();
                        Intent i = new Intent(getApplicationContext(), TestActivity.class);
                        //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                       i.putExtra(ORDER, orderNum);
+                       i.putExtra(ORDER, orderNumInt);
                        startActivity(i);
                        whilecheck = true;
-                   } else
-                       Toast.makeText(getApplicationContext(), "Order insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
-               }while(whilecheck != true);
-               } else
-                Toast.makeText(getApplicationContext(), "Data insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
+                   } else {
+                       Toast.makeText(getApplicationContext(), "Address insert failed :  " + orderNumInt, Toast.LENGTH_SHORT).show();
+                       etOrdNum.setText("");
+                       whilecheck = false;
+                   }
+                }
+            else {
+                    Toast.makeText(getApplicationContext(), "Order insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
+                    etOrdNum.setText("");
+                    whilecheck = false;
+                }
+            }while(whilecheck != true);
 
 
 

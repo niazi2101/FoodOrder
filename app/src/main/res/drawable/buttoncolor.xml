@@ -43,9 +43,9 @@
             <gradient
                 android:angle="270"
                 android:endColor="#005050"
-                android:startColor="#00E0E0" />
+                android:startColor="#00e0a4" />
             <stroke
-                android:width="3dp"
+                android:width="1dp"
                 android:color="#303030" />
             <corners
                 android:radius="10dp" />

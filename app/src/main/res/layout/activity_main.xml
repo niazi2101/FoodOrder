@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orderdetail_bg"
+    android:background="@color/greyish_green"
     android:orientation="vertical"
     tools:context="techgeeks.info.foodorder.MainActivity"
     >
