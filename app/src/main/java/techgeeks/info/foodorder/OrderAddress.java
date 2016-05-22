@@ -45,6 +45,8 @@ public class OrderAddress extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_address);
 
+        setTitle("Enter Address");
+
         etHouse = (EditText) findViewById(R.id.editTextHouseNum);
         etStreet = (EditText) findViewById(R.id.editTextStreet);
         etSector = (EditText) findViewById(R.id.editTextSector);
