@@ -98,51 +98,49 @@ public class OrderAddress extends AppCompatActivity {
         String date = billManagement.getStrDateTime();
 
         try {
-            /*
             if (house.equals("") || street.equals("") || sector.equals("")
                     || city.equals("") || phone.equals("")) {
                 Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
-            */
-            do{
+
+
                 int orderNumInt = Integer.parseInt(etOrdNum.getText().toString());
 
                 orderCheck = dBhandler.insertOrder(dBhandler, orderNumInt,
                         orderDetail, SPrice, date, null, 0);
 
                 //addressCheck = dBhandler.insertAddress(dBhandler,"house",
-                        //"street", "sector", "city", "phone", orderNum);
+                //"street", "sector", "city", "phone", orderNum);
                 if (orderCheck == true) {
 
                     //i++;
-                   //orderNum = array[i];
-                addressCheck = dBhandler.insertAddress(dBhandler,house, street, sector, city, phone, orderNumInt);
+                    //orderNum = array[i];
+                    addressCheck = dBhandler.insertAddress(dBhandler, house, street, sector, city, phone, orderNumInt);
 
-                   //orderCheck = dBhandler.insertOrder(dBhandler, orderNum, "orderDetail", "SPrice", "date", null, 0);
-                if(addressCheck = true) {
+                    //orderCheck = dBhandler.insertOrder(dBhandler, orderNum, "orderDetail", "SPrice", "date", null, 0);
+                    if (addressCheck = true) {
 
-                       billManagement.setOrderNum(orderNumInt);
+                        billManagement.setOrderNum(orderNumInt);
 
-                       Toast.makeText(getApplicationContext(), "Data inserted : " + orderNumInt, Toast.LENGTH_SHORT).show();
-                       Intent i = new Intent(getApplicationContext(), TestActivity.class);
-                       //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                       i.putExtra(ORDER, orderNumInt);
-                       startActivity(i);
-                       whilecheck = true;
-                   } else {
-                       Toast.makeText(getApplicationContext(), "Address insert failed :  " + orderNumInt, Toast.LENGTH_SHORT).show();
-                       etOrdNum.setText("");
-                       whilecheck = false;
-                   }
-                }
-            else {
-                    Toast.makeText(getApplicationContext(), "Order insert failed : " + orderNum, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Data inserted : " + orderNumInt, Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), TestActivity.class);
+                        //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra(ORDER, orderNumInt);
+                        startActivity(i);
+                        //whilecheck = true;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Address insert failed :  " + orderNumInt, Toast.LENGTH_SHORT).show();
+                        etOrdNum.setText("");
+                        //whilecheck = false;
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Order insert failed : " + orderNumInt, Toast.LENGTH_SHORT).show();
                     etOrdNum.setText("");
-                    whilecheck = false;
+                    //whilecheck = false;
                 }
-            }while(whilecheck != true);
+            //} while (whilecheck != true);
 
-
+        }
 
         }catch(Exception e)
         {

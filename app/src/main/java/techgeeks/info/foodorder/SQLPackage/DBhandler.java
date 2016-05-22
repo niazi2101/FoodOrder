@@ -132,7 +132,7 @@ public class DBhandler extends SQLiteOpenHelper {
     public Cursor getAddress(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + ADDRESS_TABLE_NAME + " WHERE " +
-                ADDRESS_COLUMN_ID + "=?", new String[]{Integer.toString(id)});
+                ADDRESS_COLUMN_ORDER_ID + "=?", new String[]{Integer.toString(id)});
 
         return res;
     }
@@ -148,7 +148,7 @@ public class DBhandler extends SQLiteOpenHelper {
     public Integer deleteAddress(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(ADDRESS_TABLE_NAME,
-                ADDRESS_COLUMN_ID + " = ? ",
+                ADDRESS_COLUMN_ORDER_ID + " = ? ",
                 new String[]{Integer.toString(id)});
     }
 
@@ -233,7 +233,7 @@ public class DBhandler extends SQLiteOpenHelper {
     public Integer deleteOrder(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(ADDRESS_TABLE_NAME,
-                ADDRESS_COLUMN_ID + " = ? ",
+                ORDER_COLUMN_ORDER_ID + " = ? ",
                 new String[]{Integer.toString(id)});
     }
 

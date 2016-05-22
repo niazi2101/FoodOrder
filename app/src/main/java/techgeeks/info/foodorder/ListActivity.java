@@ -19,7 +19,7 @@ import techgeeks.info.foodorder.SQLPackage.DBhandler;
 
 public class ListActivity extends AppCompatActivity {
 
-    public final static String KEY_EXTRA_CONTACT_ID = "KEY_EXTRA_CONTACT_ID";
+    public final static String KEY_EXTRA_ORDER_ID = "KEY_EXTRA_ORDER_ID";
 
     DBhandler handler;
     Cursor cursor;
@@ -55,13 +55,13 @@ public class ListActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView listView, View view,
                                             int position, long id) {
                         Cursor itemCursor = (Cursor) ListActivity.this.listView.getItemAtPosition(position);
-                        int studentID = itemCursor.getInt(itemCursor.getColumnIndex(DBhandler.ORDER_COLUMN_ORDER_ID));
+                        int orderID = itemCursor.getInt(itemCursor.getColumnIndex(DBhandler.ORDER_COLUMN_ORDER_ID));
 
 
 
-                        Toast.makeText(getApplicationContext(),"Roll Num clicked: " + studentID,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Roll Num clicked: " + orderID,Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ShowDetail.class);
-                        intent.putExtra(KEY_EXTRA_CONTACT_ID, studentID);
+                        intent.putExtra(KEY_EXTRA_ORDER_ID, orderID);
                         startActivity(intent);
 
                     }

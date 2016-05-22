@@ -3,6 +3,7 @@ package techgeeks.info.foodorder;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +28,8 @@ public class OrderDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         textViewMessage = (TextView) findViewById(R.id.textViewOrderDetail);
 
@@ -87,5 +90,27 @@ public class OrderDetail extends AppCompatActivity {
 
                 break;
         }
+    }
+
+    /**
+     * Let's the user tap the activity icon to go 'home'.
+     * Requires setHomeButtonEnabled() in onCreate().
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                // ProjectsActivity is my 'home' activity
+                startActivityAfterCleanup(MainActivity.class);
+                return true;
+        }
+        return (super.onOptionsItemSelected(menuItem));
+    }
+
+    private void startActivityAfterCleanup(Class<?> cls) {
+        //if (projectsDao != null) projectsDao.close();
+        Intent intent = new Intent(getApplicationContext(), cls);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

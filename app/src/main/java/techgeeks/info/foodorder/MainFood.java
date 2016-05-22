@@ -53,7 +53,7 @@ public class MainFood extends AppCompatActivity {
 
         billManagement = new BillManagement();
 
-        btnCalculate = (Button) findViewById(R.id.buttonCalculate_Food);
+//        btnCalculate = (Button) findViewById(R.id.buttonCalculate_Food);
         btnOrder = (Button) findViewById(R.id.buttonOrderNow);
         btnCart = (Button) findViewById(R.id.buttonAddToCart);
 
@@ -292,9 +292,12 @@ public class MainFood extends AppCompatActivity {
         main_subtotal = main_subtotal1 + main_subtotal2 + main_subtotal3 + main_subtotal4;
 
 
-        message += "\n Total Price: " + main_subtotal + " Rs";
+        String localMessage = message + "\n Main Food Price: " + main_subtotal
+                + " Rs";
+
+//        message += "\n Total Price: " + main_subtotal + " Rs";
         //updating UI with price of selected items
-        textPrice.setText(message);
+        textPrice.setText(localMessage);
 
         Toast.makeText(getApplicationContext(),"Price: " + main_subtotal + " Rs",Toast.LENGTH_SHORT).show();
 
@@ -314,6 +317,7 @@ public class MainFood extends AppCompatActivity {
                 billManagement.setMainFood_message(message);
                 billManagement.setMainfood_bill(main_subtotal);
 
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                 Intent order = new Intent(getApplicationContext(),OrderDetail.class);
                 startActivity(order);
                 break;
@@ -322,7 +326,7 @@ public class MainFood extends AppCompatActivity {
                 //Sending all detail to BillManagement class
                 billManagement.setMainFood_message(message);
                 billManagement.setMainfood_bill(main_subtotal);
-
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(),FastFood.class);
                 startActivity(intent);
         }

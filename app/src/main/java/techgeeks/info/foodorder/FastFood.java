@@ -21,7 +21,7 @@ public class FastFood extends AppCompatActivity {
     Spinner spinOne, spinTwo, spinThree, spinFour, spinFive;
     CheckBox checkBoxOne, checkBoxTwo, checkBoxThree, checkBoxFour, checkBoxFive;
     TextView textPrice;
-    Button btnCalculate,btnOrder,btnCart;
+    private Button btnCalculate,btnOrder,btnCart;
 
 
     private static final String fastItem1 = "Chicken Burger - 165 Rs";
@@ -57,9 +57,9 @@ public class FastFood extends AppCompatActivity {
 
         billManagement = new BillManagement();
 
-        btnCalculate = (Button) findViewById(R.id.buttonCalculate_Food);
+        //btnCalculate = (Button) findViewById(R.id.buttonCalculate_Food);
         btnOrder = (Button) findViewById(R.id.buttonOrderNow);
-        btnCart = (Button) findViewById(R.id.buttonAddToCart);
+        btnCart = (Button) findViewById(R.id.buttonAddToCart_Fast);
 
         spinOne = (Spinner) findViewById(R.id.spinnerOne);
         spinTwo = (Spinner) findViewById(R.id.spinnerTwo);
@@ -108,6 +108,8 @@ public class FastFood extends AppCompatActivity {
         message = "";
         textPrice.setText(message);
 
+        btnCart.setEnabled(false);
+        btnOrder.setEnabled(false);
     }
 
     //Function to calculate price of selected foods
@@ -282,10 +284,11 @@ public class FastFood extends AppCompatActivity {
                 + fast_subtotal4 + fast_subtotal5;
 
 
-
-        message += "\n Total Price: " + fast_subtotal + " Rs";
+        String localMessage = message + "\n Fast Food Price: " + fast_subtotal
+                + " Rs";
+        //message += "\n Total Price: " + fast_subtotal + " Rs";
         //updating UI with price of selected items
-        textPrice.setText(message);
+        textPrice.setText(localMessage);
 
         Toast.makeText(getApplicationContext(), "Price: " + fast_subtotal + " Rs", Toast.LENGTH_SHORT).show();
 
@@ -302,8 +305,8 @@ public class FastFood extends AppCompatActivity {
 
             case R.id.buttonOrderNow:
                 //Sending all detail to BillManagement class
-                billManagement.setMainFood_message(message);
-                billManagement.setMainfood_bill(fast_subtotal);
+                billManagement.setFastFood_message(message);
+                billManagement.setFastfood_bill(fast_subtotal);
 
                 Intent order = new Intent(getApplicationContext(),OrderDetail.class);
                 startActivity(order);
@@ -311,8 +314,8 @@ public class FastFood extends AppCompatActivity {
 
             case R.id.buttonAddToCart_Fast:
                 //Sending all detail to BillManagement class
-                billManagement.setMainFood_message(message);
-                billManagement.setMainfood_bill(fast_subtotal);
+                billManagement.setFastFood_message(message);
+                billManagement.setFastfood_bill(fast_subtotal);
 
                 Intent intent = new Intent(getApplicationContext(), OrderDetail.class);
                 startActivity(intent);
