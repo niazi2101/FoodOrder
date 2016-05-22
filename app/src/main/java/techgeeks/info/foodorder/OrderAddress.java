@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -131,11 +132,13 @@ public class OrderAddress extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(), "Address insert failed :  " + orderNumInt, Toast.LENGTH_SHORT).show();
                         etOrdNum.setText("");
+                        dBhandler.deleteOrder(orderNumInt);
                         //whilecheck = false;
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Order insert failed : " + orderNumInt, Toast.LENGTH_SHORT).show();
                     etOrdNum.setText("");
+                    dBhandler.deleteOrder(orderNumInt);
                     //whilecheck = false;
                 }
             //} while (whilecheck != true);
@@ -144,8 +147,8 @@ public class OrderAddress extends AppCompatActivity {
 
         }catch(Exception e)
         {
-            Toast.makeText(getApplicationContext(), "Address insert failed: "+ e.getMessage(), Toast.LENGTH_SHORT).show();
-
+            //Toast.makeText(getApplicationContext(), "Address insert failed: "+ e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("INSERT_ERROR",e.getMessage());
         }
     }
 }

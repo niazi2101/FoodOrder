@@ -96,13 +96,13 @@ public class DBhandler extends SQLiteOpenHelper {
 
         check = db.insert(ADDRESS_TABLE_NAME, null, contentValues);
 
-        if(check == 1)
+        if(check == -1)
         {
-            ch = true;
+            ch = false;
         }
         else
         {
-            ch = false;
+            ch = true;
         }
         return ch;
     }
@@ -176,13 +176,13 @@ public class DBhandler extends SQLiteOpenHelper {
 
 
             check = db.insert(ORDER_TABLE_NAME, null, contentValues);
-            if(check == 1)
+            if(check == -1)
             {
-                ch = true;
+                ch = false;
             }
             else
             {
-                ch = false;
+                ch = true;
             }
         }
         catch(Exception e)
