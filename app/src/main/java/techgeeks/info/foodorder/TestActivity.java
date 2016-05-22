@@ -30,13 +30,15 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
+        setTitle(" Overview of Detail ");
+
         tView1 = (TextView) findViewById(R.id.textView7);
         tView2 = (TextView) findViewById(R.id.textView8);
         tView3 = (TextView) findViewById(R.id.textView9);
         tView4 = (TextView) findViewById(R.id.textView10);
-        tView5 = (TextView) findViewById(R.id.textView11);
-        tView6 = (TextView) findViewById(R.id.textView12);
-        tView7 = (TextView) findViewById(R.id.textView13);
+        //tView5 = (TextView) findViewById(R.id.textView11);
+        //tView6 = (TextView) findViewById(R.id.textView12);
+        //tView7 = (TextView) findViewById(R.id.textView13);
 
         Bundle get = getIntent().getExtras();
         orderNum = get.getInt(ORDER,0);

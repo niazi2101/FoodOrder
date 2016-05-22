@@ -13,6 +13,7 @@ public class BillManagement {
     private static int total_bill = 0;
 
     private static int orderNum;
+    private static boolean checkMainFood = false,checkFastFood = false;
 
     private static String mainFood_message ;
     private static String fastFood_message ;
@@ -28,11 +29,12 @@ public class BillManagement {
     }
 
     public static String getFull_message() {
+        /*
         //if main food  null
-        if(mainFood_message == null && mainFood_message.isEmpty())
+        if(mainFood_message == null )
         {
             //if fastfood is not null
-            if(fastFood_message == null && fastFood_message.isEmpty())
+            if(fastFood_message == null )
             {
                 full_message =   fastFood_message;
             }
@@ -50,6 +52,20 @@ public class BillManagement {
 
 
         }
+        */
+        if(checkMainFood = true)
+        {
+            full_message = mainFood_message;
+            if(checkFastFood = true)
+            {
+                full_message += "\n " +fastFood_message;
+            }
+        }
+        else
+        {
+            full_message = fastFood_message;
+        }
+
         if(full_message != null && !full_message.isEmpty())
         {
             full_message += "\n " + "Total Price: " + getTotal_bill() + " Rs";
@@ -64,6 +80,14 @@ public class BillManagement {
     }
 
     public static void setFastFood_message(String fastFood_message) {
+
+        if(fastFood_message.length() > 1)
+        {
+        checkFastFood = true;}
+        else
+        {
+            checkFastFood = false;
+        }
         BillManagement.fastFood_message = fastFood_message;
     }
 
@@ -72,7 +96,13 @@ public class BillManagement {
         return mainFood_message;
     }
 
-    public static void setMainFood_message(String mainFood_message) {
+    public  static void setMainFood_message(String mainFood_message) {
+        if(mainFood_message.length() > 1)
+        {checkMainFood = true;}
+        else
+        {
+            checkMainFood = false;
+        }
         BillManagement.mainFood_message = mainFood_message;
     }
 

@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.buttonAccount:
-                Toast.makeText(getApplicationContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                Intent account = new Intent(getApplicationContext(),CustomerProfile.class);
+                startActivity(account);
+                //Toast.makeText(getApplicationContext(),"Work in progress",Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonSettings:

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,7 +17,7 @@ import techgeeks.info.foodorder.core.BillManagement;
 public class OrderDetail extends AppCompatActivity {
 
     TextView textViewMessage;
-    Button btnChange,btnAgree;
+    Button btnChange,btnAddress,btnLogin;
 
     BillManagement billManagement;
 
@@ -29,12 +30,15 @@ public class OrderDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
 
+        setTitle("Order Detail");
+
         getSupportActionBar().setHomeButtonEnabled(true);
 
         textViewMessage = (TextView) findViewById(R.id.textViewOrderDetail);
 
         btnChange = (Button) findViewById(R.id.buttonChange_Order);
-        btnAgree = (Button) findViewById(R.id.buttonPayment_Order);
+        btnAddress = (Button) findViewById(R.id.buttonGuestLogin);
+        btnLogin = (Button) findViewById(R.id.buttonUserLogin);
 
         billManagement = new BillManagement();
 
@@ -79,7 +83,7 @@ public class OrderDetail extends AppCompatActivity {
                 startActivity(i);
                 break;
 
-            case R.id.buttonPayment_Order:
+            case R.id.buttonGuestLogin:
 
                 //inserting date n time to database
                 billManagement.setStrDateTime(strDateTime);
@@ -88,6 +92,16 @@ public class OrderDetail extends AppCompatActivity {
                 textViewMessage.setText("");
                 startActivity(j);
 
+                break;
+
+            case R.id.buttonUserLogin:
+                //inserting date n time to database
+                /*billManagement.setStrDateTime(strDateTime);
+                Intent customer = new Intent(getApplicationContext(),CustomerLogin.class);
+                textViewMessage.setText("");
+                startActivity(customer);
+                */
+                Toast.makeText(getApplicationContext(),"Work in progress",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

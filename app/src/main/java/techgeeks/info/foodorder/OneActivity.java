@@ -24,8 +24,9 @@ public class OneActivity extends AppCompatActivity {
     }
     public void DeliverFood(View view) {
 
-        Intent i = new Intent(getApplicationContext(),ListActivity.class);
+        Intent customer = new Intent(getApplicationContext(),CustomerLogin.class);
+//        textViewMessage.setText("");
+        startActivity(customer);
 
-        startActivity(i);
     }
 }

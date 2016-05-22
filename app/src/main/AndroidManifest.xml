@@ -5,13 +5,21 @@
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OneActivity"
+        <activity
+            android:name=".OneActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,22 +27,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainFood"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".FastFood"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".OrderDetail"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".OrderAddress"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ShowDetail"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".TestActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainFood"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FastFood"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderAddress"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ShowDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TestActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CustomerProfile" />
+        <activity android:name=".CustomerLogin"></activity>
     </application>
 
 </manifest>

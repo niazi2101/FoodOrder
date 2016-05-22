@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/bg_login"
+    android:gravity="center"
+    tools:context="techgeeks.info.foodorder.CustomerLogin">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <!-- Login Button -->
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember Me"
+            android:id="@+id/checkBox"
+            android:layout_gravity="center_horizontal"
+            android:checked="false" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onLogin"
+            android:layout_marginTop="20dip"
+            android:text="Login"
+            android:textColor="@color/bg_login"
+            android:background="@color/whitish" />
+
+        <!-- Link to Login Screen -->
+
+        <Button
+            android:id="@+id/buttonSignUp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="40dip"
+            android:background="@null"
+            android:text="Sign Up"
+            android:onClick="onLogin"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</LinearLayout>

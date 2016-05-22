@@ -48,8 +48,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Enter Payment Method"
-        android:id="@+id/buttonPayment_Order"
+        android:text="Enter Address"
+        android:id="@+id/buttonGuestLogin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -63,6 +63,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:onClick="ChangeOrPayment"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Username and Password"
+        android:id="@+id/buttonUserLogin"
+        android:layout_gravity="center_horizontal"
         android:onClick="ChangeOrPayment"/>
 
 </LinearLayout>
