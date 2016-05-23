@@ -37,7 +37,7 @@ public class CustomerLogin extends AppCompatActivity {
     Button btnLogin,btnRegister;
 
     //BackgroundWork backgroundWork;
-    BackgroundLogin backgroundLogin;
+
 
     Context context=this;
 
@@ -45,6 +45,11 @@ public class CustomerLogin extends AppCompatActivity {
 
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
+
+    public static String  PREFS_NAME="loginPrefs";
+    public static String PREF_USERNAME="email";
+    public static String PREF_PASSWORD="password";
+    public static String PREF_CHECK= "saveLogin";
 
     private boolean saveLogin;
 
@@ -60,24 +65,48 @@ public class CustomerLogin extends AppCompatActivity {
     etPass = (EditText) findViewById(R.id.editTextPassword);
 
         saveLoginCheckBox = (CheckBox) findViewById(R.id.checkBox);
-        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-        loginPrefsEditor = loginPreferences.edit();
+        //loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        //loginPrefsEditor = loginPreferences.edit();
 
-        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        //saveLogin = loginPreferences.getBoolean("saveLogin", false);
 
 
         btnLogin = (Button) findViewById(R.id.buttonLogin);
     btnRegister = (Button) findViewById(R.id.buttonSignUp);
 
     //backgroundWork = new BackgroundWork(context);
-    backgroundLogin = new BackgroundLogin();
-
-        if (saveLogin == true) {
+    //backgroundLogin =
+        /*
+        if (saveLogin) {
             etName.setText(loginPreferences.getString("contactEmail", ""));
             etPass.setText(loginPreferences.getString("contactPassword", ""));
             saveLoginCheckBox.setChecked(true);
         }
+*/
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //read username and password from SharedPreferences
+        getUser();
+    }
+
+    public void getUser(){
+        //SharedPreferences pref = getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+        loginPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
+        String username = loginPreferences.getString(PREF_USERNAME, null);
+        String password = loginPreferences.getString(PREF_PASSWORD, null);
+
+        if (username != null || password != null) {
+            //directly show logout form
+            //showLogout(username);
+            Intent i = new Intent(getApplicationContext(), ListActivity.class);
+            startActivity(i);
+
+        }
     }
 
     public void onLogin(View view) {
@@ -90,7 +119,8 @@ public class CustomerLogin extends AppCompatActivity {
                 String type = "login";
                 String result;
 
-                Toast.makeText(getApplicationContext(),"Button pressed",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"Button pressed",Toast.LENGTH_LONG).show();
+                BackgroundLogin backgroundLogin = new BackgroundLogin();
                 backgroundLogin.execute(type, name, pass);
                 break;
 
@@ -206,29 +236,39 @@ public class CustomerLogin extends AppCompatActivity {
             /*alertDialog.setMessage(result);
             alertDialog.show();
             */
-            pDialog.dismiss();
+
             if(aVoid.contains("login success") || aVoid.equals("login success")) {
                 //alertDialog.hide();
 
+                pDialog.setMessage("Login Success");
+                pDialog.dismiss();
                 Intent i = new Intent(getApplicationContext(), ListActivity.class);
                 startActivity(i);
 
                 if (saveLoginCheckBox.isChecked()) {
+                    /*
                     loginPrefsEditor.putBoolean("saveLogin", true);
                     loginPrefsEditor.putString("contactEmail", name);
                     loginPrefsEditor.putString("contactPassword", pass);
-                    loginPrefsEditor.commit();
-                } else {
+                    loginPrefsEditor.commit();*/
+
+                    rememberMe(true,name,pass); //save username and password
+
+
+                } /*else {
                     loginPrefsEditor.clear();
                     loginPrefsEditor.commit();
-                }
+                }*/
 
                 Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_SHORT).show();
             }
             else
             {
                 etPass.setText("");
-                Toast.makeText(getApplicationContext(),"Invalid Email or Password",Toast.LENGTH_SHORT).show();
+                pDialog.setMessage("Login Failed. Inavalid Email or Password");
+                pDialog.setMax(10);
+
+                pDialog.dismiss();
 
             }
         }
@@ -239,4 +279,14 @@ public class CustomerLogin extends AppCompatActivity {
         }
     }
 
+    public void rememberMe(boolean check,String user, String password){
+        //save username and password in SharedPreferences
+        loginPrefsEditor = loginPreferences.edit();
+        /*getSharedPreferences(PREFS_NAME,MODE_PRIVATE)
+                .edit()*/
+        loginPrefsEditor.putBoolean(PREF_CHECK,check);
+        loginPrefsEditor.putString(PREF_USERNAME,user);
+        loginPrefsEditor.putString(PREF_PASSWORD,password);
+        loginPrefsEditor.commit();
+    }
 }

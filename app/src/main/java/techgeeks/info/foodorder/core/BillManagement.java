@@ -81,13 +81,7 @@ public class BillManagement {
 
     public static void setFastFood_message(String fastFood_message) {
 
-        if(fastFood_message.length() > 1)
-        {
-        checkFastFood = true;}
-        else
-        {
-            checkFastFood = false;
-        }
+        checkFastFood = fastFood_message.length() > 1;
         BillManagement.fastFood_message = fastFood_message;
     }
 

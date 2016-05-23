@@ -142,8 +142,6 @@ public class CustomerProfile extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } else {
-
             }
 
 

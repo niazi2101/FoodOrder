@@ -1,9 +1,12 @@
 package techgeeks.info.foodorder;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -24,6 +27,10 @@ public class ShowDetail extends AppCompatActivity {
     private DBhandler dBhandler;
     Cursor cursor;
 
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,9 @@ public class ShowDetail extends AppCompatActivity {
         setContentView(R.layout.activity_show_detail);
 
         setTitle("Order Detail");
+
+        loginPreferences = getSharedPreferences(CustomerLogin.PREFS_NAME, MODE_PRIVATE);
+
 
         tvOrderNum = (TextView) findViewById(R.id.textView15);
         tvOrderDetail = (TextView) findViewById(R.id.textViewOrderDetail);
@@ -92,6 +102,21 @@ public class ShowDetail extends AppCompatActivity {
         tvAddress.setText(address);
         tvTime.setText(stOrderTime);
         tvPhone.setText(stPhone);
+
+    }
+
+
+    public void onLogout(View view) {
+
+        loginPrefsEditor = loginPreferences.edit();
+        /*getSharedPreferences(PREFS_NAME,MODE_PRIVATE)
+                .edit()*/
+        loginPrefsEditor.clear();
+        loginPrefsEditor.commit();
+
+        Intent i = new Intent(getApplicationContext(),CustomerLogin.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
 
     }
 }
